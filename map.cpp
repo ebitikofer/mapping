@@ -66,7 +66,13 @@ void map::routeFinder(){
       cout << checker[j] << " ";
     }
 
-    cout << endl;
+    cout << endl; /*
+
+    for(int j = 0; j < n; j++){
+      cout << weight[j] << " ";
+    }
+
+    cout << endl; */
 
     for(int j = 0; j < n; j++){
       if(checker[j] < weight[j] && checker[j] != 0){
@@ -94,7 +100,7 @@ void map::output(){
     cout << name[path[n-1][i]] << " ";
   }
 
-  cout << endl;
+  cout << weight[n-1] << endl;
 
   //loop
   //print names according to path then weight
