@@ -41,6 +41,11 @@ void map::input(){
     distance.push_back(d_row);
   }
 
+  //This loop cuts out repeated values at the bottom traingle of the matrix
+  //EX: 0 1 2 0        0 1 2 0
+  //    1 0 5 6   >>   0 0 5 6
+  //    2 5 0 7   >>   0 0 0 7
+  //    0 6 7 0        0 0 0 0
   for(int i = 1; i < n; i++){
     for(int j = 0; j < i; j++){
       distance[i][j] = 0;
