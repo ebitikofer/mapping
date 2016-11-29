@@ -67,11 +67,11 @@ void map::routeFinder(){
     }
 
     for(int j = i; j < n; j++){ //starts at current location and goes through the ones we haven't reached yet
-      if(checker[j] < weight[j]){// && checker[j] != 0){ //if the compination tried is shorter than the direct route then swap as long a the chcker route isnt zero which would mean it didnt exist
+      if(checker[j] < weight[j]){ //if the compination tried is shorter than the direct route then swap as long a the chcker route isnt zero which would mean it didnt exist
         if(checker[j] != 0){
           weight[j] = checker[j];
         }
-        path[j].push_back(i); //push back path taken value
+        path[j].push_back(i); //push back path taken value even if zero to record compound path
       }
     }
 
