@@ -41,6 +41,11 @@ void map::input(){
     distance.push_back(d_row);
   }
 
+  //This loop cuts out repeated values at the bottom traingle of the matrix
+  //EX: 0 1 2 0        0 1 2 0
+  //    1 0 5 6   >>   0 0 5 6
+  //    2 5 0 7   >>   0 0 0 7
+  //    0 6 7 0        0 0 0 0
   for(int i = 1; i < n; i++){
     for(int j = 0; j < i; j++){
       distance[i][j] = 0;
@@ -61,20 +66,11 @@ void map::routeFinder(){
     vector< int > checker;
     checker = distance[i];
 
-    for(int j = 0; j < n; j++){
+    for(int j = i; j < n; j++){
       checker[j] += adder;
-      cout << checker[j] << " ";
     }
 
-    cout << endl; /*
-
-    for(int j = 0; j < n; j++){
-      cout << weight[j] << " ";
-    }
-
-    cout << endl; */
-
-    for(int j = 0; j < n; j++){
+    for(int j = i; j < n; j++){
       if(checker[j] < weight[j] && checker[j] != 0){
         weight[j] = checker[j];
         path[j].push_back(i);
@@ -84,7 +80,7 @@ void map::routeFinder(){
     //found[i] = true;
 	  //repeat till fall off and found all true
 
-    adder = distance[i][i+1];
+    adder = weight[i+1];
 
   }
 
@@ -92,9 +88,9 @@ void map::routeFinder(){
 
 void map::output(){
 
-  for(int i = 0; i < n; i++){
-    cout << weight[i] << endl;//name[i] << endl;
-  }
+  //for(int i = 0; i < n; i++){
+  //  cout << weight[i] << endl;//name[i] << endl;
+  //}
 
   for(int i = 0; i < path[n-1].size(); i++){
     cout << name[path[n-1][i]] << " ";
